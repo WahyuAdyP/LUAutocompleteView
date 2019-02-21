@@ -171,7 +171,7 @@ open class LUAutocompleteView: UIView {
         perform(#selector(getElements), with: nil, afterDelay: throttleTime)
     }
     
-    func cancelPerformRequest() {
+    public func cancelPerformRequest() {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(getElements), object: nil)
     }
 
