@@ -167,8 +167,12 @@ open class LUAutocompleteView: UIView {
     }
 
     @objc private func textFieldEditingChanged() {
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(getElements), object: nil)
+        cancelPerformRequest()
         perform(#selector(getElements), with: nil, afterDelay: throttleTime)
+    }
+    
+    func cancelPerformRequest() {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(getElements), object: nil)
     }
 
     @objc private func getElements() {
