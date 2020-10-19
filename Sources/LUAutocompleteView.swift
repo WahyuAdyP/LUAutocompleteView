@@ -6,6 +6,8 @@
 //  Copyright © 2017 Laurentiu Ungur. All rights reserved.
 //
 
+import UIKit
+
 /// Highly configurable autocomplete view that is attachable to any `UITextField`.
 open class LUAutocompleteView: UIView {
     // MARK: - Public Properties
@@ -237,8 +239,9 @@ extension LUAutocompleteView: UITableViewDataSource {
 
             return cell
         }
-
+        
         customCell.set(text: text)
+        dataSource?.autocompleteView?(self, cell: customCell, cellForRowAt: indexPath)
 
         return customCell
     }

@@ -31,7 +31,7 @@ final class ViewController: UIViewController {
         // Customisation
 
         autocompleteView.rowHeight = 45
-        //autocompleteView.autocompleteCell = CustomAutocompleteTableViewCell.self // Uncomment this line in order to use customised autocomplete cell
+        autocompleteView.autocompleteCell = CustomAutocompleteTableViewCell.self // Uncomment this line in order to use customised autocomplete cell
     }
 }
 
@@ -41,6 +41,10 @@ extension ViewController: LUAutocompleteViewDataSource {
     func autocompleteView(_ autocompleteView: LUAutocompleteView, elementsFor text: String, completion: @escaping ([String]) -> Void) {
         let elementsThatMatchInput = elements.filter { $0.lowercased().contains(text.lowercased()) }
         completion(elementsThatMatchInput)
+    }
+    
+    func autocompleteView(_ autocompleteView: LUAutocompleteView, cell: LUAutocompleteTableViewCell, cellForRowAt indexPath: IndexPath) {
+        cell.imageView?.image = UIImage(named: "Icon")
     }
 }
 
